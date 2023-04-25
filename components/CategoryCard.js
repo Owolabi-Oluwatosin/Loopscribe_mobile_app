@@ -4,8 +4,10 @@ import { View, Text, Image, TouchableOpacity, Modal, StyleSheet } from 'react-na
 import getMoment from '../utils/getMoment';
 import DetailCard from './DetailCard';
 import getRandomImage from '../utils/getRandomImage';
+import { useNavigation } from '@react-navigation/native';
 
 const CategoryCard = ({ category }) => {
+    const navigation = useNavigation();
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const toggleModal = () => {
@@ -35,7 +37,7 @@ const CategoryCard = ({ category }) => {
                     </View>
                 </View>
             </TouchableOpacity>
-            <Modal visible={isModalVisible} transparent={true}>
+            <Modal visible={isModalVisible} transparent={true} animationType="slide">
                 <TouchableOpacity style={styles.overlay} onPress={toggleModal} />
                 <View style={styles.modal}>
                     <DetailCard category={category} />
